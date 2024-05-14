@@ -4,7 +4,7 @@
 
 [general]
 name=Viper (QGIS snake clone)
-qgisMinimumVersion=3.0
+qgisMinimumVersion=3.6
 description=Snake clone using vector layers and QGIS canvas
 version=0.1
 author=Viper MiniQ

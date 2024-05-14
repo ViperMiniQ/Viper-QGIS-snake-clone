@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DockWidget</class>
+ <widget class="QDockWidget" name="DockWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>489</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DockWidget</string>
+  </property>
+  <widget class="QWidget" name="dockWidgetContents">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Time limit (s):</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Speed (refresh rate) (s):</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0" colspan="2">
+     <widget class="QFrame" name="frame_2">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="1" column="1">
+        <widget class="QPushButton" name="pushButtonStart">
+         <property name="text">
+          <string>Start</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QDoubleSpinBox" name="doubleSpinBoxPlayAreaHeight">
+      <property name="decimals">
+       <number>4</number>
+      </property>
+      <property name="minimum">
+       <double>0.000300000000000</double>
+      </property>
+      <property name="maximum">
+       <double>1000000000000000072531436381529235126158374409646521955518210155479040.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>1000.000000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>Play area height (m):</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QDoubleSpinBox" name="doubleSpinBoxTimeLimit">
+      <property name="maximum">
+       <double>100000000000000000000.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>0.000000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QDoubleSpinBox" name="doubleSpinBoxRefreshRate">
+      <property name="decimals">
+       <number>4</number>
+      </property>
+      <property name="singleStep">
+       <double>0.100000000000000</double>
+      </property>
+      <property name="value">
+       <double>0.200000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QDoubleSpinBox" name="doubleSpinBoxSnakeWidth">
+      <property name="decimals">
+       <number>4</number>
+      </property>
+      <property name="minimum">
+       <double>0.000100000000000</double>
+      </property>
+      <property name="maximum">
+       <double>9999999999999999538762658202121142272.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>50.000000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="2">
+     <widget class="QLabel" name="label_9">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>Play area width (m):</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0" colspan="2">
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="5" column="0">
+        <widget class="QPushButton" name="pushButtonMoveRight">
+         <property name="text">
+          <string>Move right</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="comboBoxMoveUp"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Keyboard shortcut:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QPushButton" name="pushButtonMoveDown">
+         <property name="text">
+          <string>Move down</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="comboBoxMoveDown"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Button:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="pushButtonMoveUp">
+         <property name="text">
+          <string>Move up</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="comboBoxMoveLeft"/>
+       </item>
+       <item row="6" column="0">
+        <widget class="QPushButton" name="pushButtonMoveLeft">
+         <property name="text">
+          <string>Move left</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="comboBoxMoveRight"/>
+       </item>
+       <item row="7" column="0">
+        <widget class="QPushButton" name="pushButtonPause">
+         <property name="styleSheet">
+          <string notr="true">border=0;</string>
+         </property>
+         <property name="text">
+          <string>Pause</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QComboBox" name="comboBoxPause"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QCheckBox" name="checkBoxUseExistingLayer">
+      <property name="text">
+       <string>use selected feature as play area (must be a polygon)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QDoubleSpinBox" name="doubleSpinBoxPlayAreaWidth">
+      <property name="decimals">
+       <number>4</number>
+      </property>
+      <property name="minimum">
+       <double>0.000100000000000</double>
+      </property>
+      <property name="maximum">
+       <double>9999999999999999932209486743616279764617084419440640.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>1000.000000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Snake width (m):</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QCheckBox" name="checkBoxPrepareFood">
+      <property name="text">
+       <string>prepare food</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

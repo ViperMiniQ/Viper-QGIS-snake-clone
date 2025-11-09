@@ -310,10 +310,12 @@ class viperDialog(QDockWidget, FORM_CLASS):
             refresh_rate=self.doubleSpinBoxRefreshRate.value(),
             time_limit=self.doubleSpinBoxTimeLimit.value(),
             snake_width=self.doubleSpinBoxSnakeWidth.value(),
+            play_group=game_group,
             play_area_layer=play_area_layer,
             snake_layer=snake_layer,
             food_layer=food_layer,
             prepare_food=self.checkBoxPrepareFood.isChecked(),
+            remove_layers_on_end=self.checkBoxRemoveLayersOnGameEnd.isChecked()
         )
         
         QgsApplication.taskManager().addTask(game)

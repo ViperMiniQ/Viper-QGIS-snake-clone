@@ -1,5 +1,9 @@
 from qgis.core import (
-    QgsTask, 
+    Qgis,
+    QgsTask,
+    QgsMessageLog,
+    QgsProject,
+    QgsLayerTreeGroup,
     QgsVectorLayer, 
     QgsFeature, 
     QgsGeometry, 
@@ -19,13 +23,15 @@ class ViperMain(QgsTask):
         btn_left,
         btn_right,
         btn_pause, 
+        play_group: QgsLayerTreeGroup,
         play_area_layer: QgsVectorLayer,
         snake_layer: QgsVectorLayer,
         food_layer: QgsVectorLayer,
         snake_width: int = 25, 
         refresh_rate: float = 0.25, 
         time_limit: float = 60,
-        prepare_food: bool = True
+        prepare_food: bool = True,
+        remove_layers_on_end: bool = True
     ):
         """
         :param prepare_food: if True, the food points are generated in advance, otherwise they are generated on the fly
@@ -45,6 +51,7 @@ class ViperMain(QgsTask):
         self.refresh_rate = refresh_rate
         self.time_limit = time_limit
         
+        self.play_group = play_group
         self.snake_layer = snake_layer
         self.food_layer = food_layer
         self.play_area_layer = play_area_layer
@@ -80,6 +87,8 @@ class ViperMain(QgsTask):
         self.prepared_food = None
         if prepare_food:
             self.prepare_food_points()
+
+        self.remove_layers_on_end = remove_layers_on_end
         
         self.current_snake_features = list(self.snake_layer.getFeatures())
         self.snake_layer_spatial_index = QgsSpatialIndex(self.snake_layer)
@@ -305,5 +314,14 @@ class ViperMain(QgsTask):
             
         return True
     
+    def _remove_layers_from_panel(self):
+        root = QgsProject.instance().layerTreeRoot()
+        root.removeChildNode(self.play_group)
+    
     def finished(self, result):
+        QgsMessageLog.logMessage(f"Game finished with result: {self.snake_layer.featureCount()}", "Viper snake", Qgis.MessageLevel.Info)
+
+        if self.remove_layers_on_end:
+            self._remove_layers_from_panel()
+
         self._refresh_all_layers()

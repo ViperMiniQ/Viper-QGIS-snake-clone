@@ -34,3 +34,16 @@ Keyboard shortcuts for actions must be set and must be __unique__. Buttons for m
 
 __prepare food__ is a game optimization: instead of randomly generating a food point every time it is needed, the option instructs the game to generate and store all possible food points within the play area.
 Using the option, once a snake eats the food, new food is created without a visible hiccup, but starting the game could take longer if a __HUGE__ play area is set (containing a million or more possible food locations). Also, the speed depends on the system it runs on.
+
+__remove added layers on game end__ removes the group containing the game layers when game ends.
+
+When a game finishes, the result is logged in the QGIS Log Messages panel.
+
+## Layer Styling
+
+It is possible to define styles for game layers.
+Simply put your __.qml__ styles in __/styles/__ directory within the plugin directory, name them __snake.qml__, __food.qml__ and __area.qml__ to set the style for the appropriate layer.
+
+Default values are green polygons for snake, red for food and white for the play area.
+
+![](images/styles_example.png)

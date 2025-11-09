@@ -25,9 +25,6 @@ from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication, Qt
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 
-# Initialize Qt resources from file resources.py
-from .resources import *
-# Import the code for the dialog
 from .viper_dialog import viperDialog
 import os.path
 
@@ -189,7 +186,7 @@ class viper:
             self.first_start = False
             self.dlg = viperDialog()
             
-            self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dlg)
+            self.iface.addDockWidget(Qt.DockWidgetArea.LeftDockWidgetArea, self.dlg)
 
         # show the dialog
         self.dlg.show()

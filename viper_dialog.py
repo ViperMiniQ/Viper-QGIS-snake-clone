@@ -107,6 +107,11 @@ class viperDialog(QDockWidget, FORM_CLASS):
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
+
+        self.styles_dir = os.path.join(os.path.dirname(__file__), 'styles')
+        self.snake_style_path = os.path.join(self.styles_dir, 'snake.qml')
+        self.food_style_path = os.path.join(self.styles_dir, 'food.qml')
+        self.play_area_style_path = os.path.join(self.styles_dir, 'area.qml')
         
         self.pushButtonPause.setStyleSheet("background-color: yellow")
         self.pushButtonStart.setStyleSheet("background-color: green")
@@ -172,14 +177,45 @@ class viperDialog(QDockWidget, FORM_CLASS):
             "memory"
         )
         area_layer.dataProvider().addFeatures([qgsfeature])
-        
+
+        if os.path.exists(self.play_area_style_path):
+            result = area_layer.loadNamedStyle(self.play_area_style_path)
+            if not result[1]:
+                QgsMessageLog.logMessage("Failed to load play area style: " + result[0], "Viper", Qgis.MessageLevel.Warning)
+                self.set_layer_solid_color(area_layer, 255, 255, 255)
+        else:
+            QgsMessageLog.logMessage("Could not find play area style file at " + self.play_area_style_path, "Viper", Qgis.MessageLevel.Warning)
+            self.set_layer_solid_color(area_layer, 255, 255, 255)
+
         return area_layer
         
     def create_new_snake_layer(self, epsg: str):
-        return QgsVectorLayer(f"Polygon?crs={epsg}", "Snake", "memory")
-    
+        snake_layer = QgsVectorLayer(f"Polygon?crs={epsg}", "Snake", "memory")
+
+        if os.path.exists(self.snake_style_path):
+            result = snake_layer.loadNamedStyle(self.snake_style_path)
+            if not result[1]:
+                QgsMessageLog.logMessage("Failed to load snake style: " + result[0], "Viper", Qgis.MessageLevel.Warning)
+                self.set_layer_solid_color(snake_layer, 1, 150, 32)
+        else:
+            QgsMessageLog.logMessage("Could not find snake style file at " + self.snake_style_path, "Viper", Qgis.MessageLevel.Warning)
+            self.set_layer_solid_color(snake_layer, 1, 150, 32)
+
+        return snake_layer
+
     def create_new_food_layer(self, epsg: str):
-        return QgsVectorLayer(f"Polygon?crs={epsg}", "Food", "memory")
+        food_layer = QgsVectorLayer(f"Polygon?crs={epsg}", "Food", "memory")
+
+        if os.path.exists(self.food_style_path):
+            result = food_layer.loadNamedStyle(self.food_style_path)
+            if not result[1]:
+                QgsMessageLog.logMessage("Failed to load food style: " + result[0], "Viper", Qgis.MessageLevel.Warning)
+                self.set_layer_solid_color(food_layer, 200, 0, 0)
+        else:
+            QgsMessageLog.logMessage("Could not find food style file at " + self.food_style_path, "Viper", Qgis.MessageLevel.Warning)
+            self.set_layer_solid_color(food_layer, 200, 0, 0)
+
+        return food_layer
     
     def set_layer_solid_color(self, layer: QgsVectorLayer, r: int, b: int, g: int):
         layer.renderer().symbol().setColor(QColor(r, b, g))

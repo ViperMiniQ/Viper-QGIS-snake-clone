@@ -4,7 +4,8 @@
 
 [general]
 name=Viper (QGIS snake clone)
-qgisMinimumVersion=3.6
+qgisMinimumVersion=3.16
+qgisMaximumVersion=4.99
 description=Snake clone using vector layers and QGIS canvas
 version=0.1
 author=Viper MiniQ
@@ -45,3 +46,4 @@ Category of the plugin: Raster, Vector, Database or Web
 # If the plugin can run on QGIS Server.
 server=False
 
+supportsQt6=True

@@ -31,12 +31,14 @@ from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QColor
 
 from qgis.core import (
+    Qgis,
     QgsApplication,
     QgsVectorLayer, 
     QgsFeature, 
     QgsGeometry, 
     QgsPointXY, 
-    QgsProject
+    QgsProject,
+    QgsMessageLog
 )
 
 from . import viper_game
@@ -82,10 +84,10 @@ KEY_SHORTCUTS = {
         '7': '7',
         '8': '8',
         '9': '9',
-        'Arrow Up': Qt.Key_Up,
-        'Arrow Down': Qt.Key_Down,
-        'Arrow Left': Qt.Key_Left,
-        'Arrow Right': Qt.Key_Right,
+        'Arrow Up': Qt.Key.Key_Up,
+        'Arrow Down': Qt.Key.Key_Down,
+        'Arrow Left': Qt.Key.Key_Left,
+        'Arrow Right': Qt.Key.Key_Right,
     }
 
 
@@ -248,7 +250,7 @@ class viperDialog(QDockWidget, FORM_CLASS):
         error_dialog = QMessageBox()
         error_dialog.setText(str("Button shortcuts must not be empty or duplicated!"))
         error_dialog.setWindowTitle('Viper: Shortcuts error')
-        error_dialog.setStandardButtons(QMessageBox.Ok)
+        error_dialog.setStandardButtons(QMessageBox.StandardButton.Ok)
         error_dialog.exec()
         
     def start_game(self):
@@ -284,10 +286,6 @@ class viperDialog(QDockWidget, FORM_CLASS):
         )
         snake_layer = self.create_new_snake_layer(epsg)
         food_layer = self.create_new_food_layer(epsg)
-        
-        self.set_layer_solid_color(play_area_layer, 255, 255, 255)
-        self.set_layer_solid_color(snake_layer, 1, 150, 32)
-        self.set_layer_solid_color(food_layer, 200, 0, 0)
         
         root = QgsProject.instance().layerTreeRoot()
         game_group = root.insertGroup(0, "Viper")
